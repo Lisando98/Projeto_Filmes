@@ -8,7 +8,7 @@ export default function Details (){
     const { id } = useParams();
 
     useEffect(() => {
-        fetch(`${API_URL}/${id}?api_key=${API_KEY}&language=pt-BR`)
+        fetch('https://pokeapi.co/api/v2/pokemon')
         .then(response => response.json())
         .then(data => setselectedMovie(data))
     },[id])

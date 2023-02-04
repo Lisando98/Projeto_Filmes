@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
         const [movies, setMovies] = useState<any[]>([])
 
         useEffect(() => {
-            fetch(`${API_URL}/popular?api_key=${API_KEY}&language=pt-BR&page=1`)
+            fetch('https://pokeapi.co/api/v2/pokemon')
             .then(response => response.json())
             .then(data => setMovies(data.results))
         },[])
@@ -17,17 +17,16 @@ import { Link } from 'react-router-dom';
 
             <Container>
 
-                <h1>Movies</h1>
+                <h1>Pokémon</h1>
 
                 <MovieList>
                     {
-                        movies.map(movie => {
+                        movies.map(pokemon => {
+                            const pokeId = pokemon.url.split('/')
                             return(
                                 <Movie>
-                                    <Link to={`/details/${movie.id}`}>
-                                        <img src={`${API_IMAGE}${movie.poster_path}`}alt={movie.title} />
-                                    </Link>
-                                    <span>{movie.title}</span>
+                                        <img src={`https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/${pokeId[6]}.svg`} alt={pokemon.name} />
+                                    <span>{pokemon.name}</span>
                                 </Movie>
 
                             )

@@ -21,7 +21,7 @@ export const Movie = styled.li`
     align-items: center;
 
     img {
-        width: 180px;
+        height: 180px;
         border-radius: 1rem;
         margin-bottom: 2rem;
     }
